@@ -1,0 +1,12 @@
+{
+  "name": "solar-generation-dashboard",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite site",
+    "build": "vite build site",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

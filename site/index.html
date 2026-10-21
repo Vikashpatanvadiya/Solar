@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solar Generation Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Solar Generation Dashboard</h1>
+        <p class="page-subtitle" id="subtitle">Grid-India Power Supply Position reports</p>
+      </div>
+      <button class="btn btn-primary" id="export-btn">Export filtered CSV</button>
+    </header>
+
+    <div class="filter-row">
+      <label for="region-select">Region</label>
+      <select id="region-select"></select>
+
+      <label for="year-select">Year</label>
+      <select id="year-select"></select>
+
+      <label for="month-select">Month</label>
+      <select id="month-select"></select>
+    </div>
+
+    <section class="kpi-row" id="kpi-row">
+      <div class="kpi-tile">
+        <p class="kpi-label">Total solar generation</p>
+        <div class="kpi-value" id="kpi-total">&ndash;</div>
+        <p class="kpi-sub" id="kpi-total-sub">&nbsp;</p>
+      </div>
+      <div class="kpi-tile">
+        <p class="kpi-label">Average per day</p>
+        <div class="kpi-value" id="kpi-avg">&ndash;</div>
+        <p class="kpi-sub">MU / day</p>
+      </div>
+      <div class="kpi-tile">
+        <p class="kpi-label">Peak day</p>
+        <div class="kpi-value kpi-accent" id="kpi-peak-value">&ndash;</div>
+        <p class="kpi-sub" id="kpi-peak-date">&nbsp;</p>
+      </div>
+      <div class="kpi-tile">
+        <p class="kpi-label">Data coverage</p>
+        <div class="kpi-value" id="kpi-days">&ndash;</div>
+        <p class="kpi-sub" id="kpi-range">&nbsp;</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2 class="card-title">Solar generation over time</h2>
+        <div class="card-controls">
+          <button class="link-btn" id="toggle-table-btn">View as table</button>
+          <select id="granularity-select">
+            <option value="daily" selected>Daily</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+      </div>
+      <div id="main-chart"></div>
+      <p class="kpi-sub" id="chart-note" style="margin:8px 0 0;"></p>
+      <div class="data-table-wrap hidden" id="main-table-wrap">
+        <table class="data-table" id="main-table">
+          <thead><tr><th>Period</th><th>Solar generation (MU)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2 class="card-title">2024 vs 2025 &mdash; monthly comparison</h2>
+      </div>
+      <div class="legend" id="yoy-legend"></div>
+      <div id="yoy-chart"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2 class="card-title">Solar generation by region</h2>
+      </div>
+      <p class="kpi-sub" id="rank-sub" style="margin-top:-8px;margin-bottom:14px;">&nbsp;</p>
+      <div class="rank-list" id="rank-list"></div>
+    </section>
+
+    <section class="card" id="weather-section">
+      <div class="card-header">
+        <div>
+          <h2 class="card-title">Weather & Solar Drivers (NASA POWER Satellite Data)</h2>
+          <p class="kpi-sub" style="margin:2px 0 0;">Meteorological predictors capacity-weighted over 10 major Indian solar hub states</p>
+        </div>
+        <a href="/lab" target="_blank" class="btn btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+          🔬 Open Multi-Model AI Lab
+        </a>
+      </div>
+      <div class="kpi-row" style="margin-top:10px;">
+        <div class="kpi-tile">
+          <p class="kpi-label">Solar Irradiance (GHI)</p>
+          <div class="kpi-value">5.22 <span style="font-size:14px;color:var(--text-muted);">kWh/m²/day</span></div>
+          <p class="kpi-sub" style="color:#10b981;font-weight:600;">+0.580 strong positive correlation</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">PV Module Temp (NOCT)</p>
+          <div class="kpi-value">47.8 <span style="font-size:14px;color:var(--text-muted);">°C</span></div>
+          <p class="kpi-sub" style="color:#10b981;">+0.317 cell thermal factor</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">Ambient Air Temp (2m)</p>
+          <div class="kpi-value">27.5 <span style="font-size:14px;color:var(--text-muted);">°C</span></div>
+          <p class="kpi-sub">National solar-weighted avg</p>
+        </div>
+        <div class="kpi-tile">
+          <p class="kpi-label">Relative Humidity</p>
+          <div class="kpi-value">56.3 <span style="font-size:14px;color:var(--text-muted);">%</span></div>
+          <p class="kpi-sub" style="color:#ef4444;">−0.517 cloud/monsoon attenuation</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="forecast-section">
+      <div class="card-header">
+        <h2 class="card-title">2026 AI Forecast</h2>
+        <div class="card-controls">
+          <button class="btn" id="fc-train-btn" disabled>Train AI Model</button>
+          <button class="btn" id="fc-generate-btn" disabled>Generate 2026 Forecast</button>
+          <button class="btn" id="fc-compare-btn" disabled>View 2026 Comparison</button>
+          <a href="/lab" target="_blank" class="btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px;">Model Lab &rarr;</a>
+        </div>
+      </div>
+      <p class="kpi-sub" id="fc-region-label" style="margin-top:-8px;margin-bottom:6px;">&nbsp;</p>
+      <p class="kpi-sub" id="fc-status" style="margin:0 0 14px;">Loading&hellip;</p>
+      <div class="notice hidden" id="fc-warnings"></div>
+      <div id="fc-body" class="hidden">
+        <div class="kpi-row" id="fc-kpis"></div>
+        <div class="legend" id="fc-legend"></div>
+        <div id="fc-chart"></div>
+        <div class="kpi-row" id="fc-metrics" style="margin-top:18px;"></div>
+        <div class="data-table-wrap" id="fc-table-wrap">
+          <table class="data-table" id="fc-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Predicted (MU)</th>
+                <th>Actual (MU)</th>
+                <th>Difference (actual &minus; predicted)</th>
+                <th>Error (%)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">Source: Grid-India Monthly PSP reports (2024&ndash;2025) and Daily PSP reports (2026) &middot; Not every daily report is published, so 2026 has gaps &middot; Thermal &amp; nuclear generation are not extracted.</p>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

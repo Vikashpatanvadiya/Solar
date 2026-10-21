@@ -1,0 +1,34 @@
+======================================================================
+PHASE 1 DATA REPORT — All-India daily solar forecasting dataset
+======================================================================
+
+SOURCES
+  Target  : Grid-India PSP reports (daily All-India solar generation, MU)
+  Weather : NASA POWER daily, capacity-weighted over 10 solar-hub states
+            https://power.larc.nasa.gov  (Renewable Energy community)
+  Module temperature: NOCT model, T_m = T_a + (G/800)*(NOCT-20), NOCT=45C, 8 sun-hours
+
+ROW COUNTS
+  Rows after weather+solar join : 921
+  Dropped (missing values)      : 7
+  Dropped (non-positive power)  : 0
+  Final usable rows             : 914
+    train (2024-2025) :  640   2024-04-01 -> 2025-12-31
+    test  (2026)      :  274   2026-01-01 -> 2026-10-15
+
+FEATURES (mean over all rows, with units)
+  ghi                  mean=    5.24  min=   2.54  max=   7.66  kWh/m2/day
+  ambient_temp         mean=   27.62  min=  16.02  max=  35.15  C
+  module_temp          mean=   48.07  min=  30.11  max=  62.76  C
+  wind_speed           mean=    3.89  min=   1.74  max=   7.40  m/s
+  relative_humidity    mean=   55.90  min=  17.60  max=  84.55  %
+  solar_generation_MU  mean=   453.0  min=  193.0  max=  737.7  MU (target)
+
+CORRELATION of each feature with solar generation (train rows)
+  ghi                  r = +0.575
+  module_temp          r = +0.311
+  ambient_temp         r = +0.039
+  wind_speed           r = -0.247
+  relative_humidity    r = -0.513
+
+Saved: /Users/bansi/Developer/Solar/solar-prediction/data/processed/allindia_daily.csv

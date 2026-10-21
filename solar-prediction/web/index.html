@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solar Forecast — India 2026</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Solar Generation Forecast — India</h1>
+        <p class="page-subtitle" id="subtitle">Predicted vs actual daily solar generation</p>
+      </div>
+      <button class="btn" id="train-btn">Retrain models</button>
+    </header>
+
+    <nav class="section-nav">
+      <a href="#sec-forecast">Forecast</a>
+      <a href="#sec-models">Models</a>
+      <a href="#sec-trust">Reliability</a>
+      <a href="#sec-2027">2027 outlook</a>
+      <a href="#sec-weather">Weather</a>
+      <a href="#sec-map">Map</a>
+      <a href="#sec-data">Data</a>
+    </nav>
+
+    <div class="notice" id="accuracy-note"></div>
+
+    <section class="kpi-row">
+      <div class="kpi-tile"><p class="kpi-label">Forecast accuracy</p><div class="kpi-value kpi-good" id="kpi-acc">&ndash;</div><p class="kpi-sub" id="kpi-acc-sub">&nbsp;</p>
+        <div class="meter"><span id="kpi-acc-bar" style="width:0%"></span></div></div>
+      <div class="kpi-tile"><p class="kpi-label">Typical daily error</p><div class="kpi-value" id="kpi-rmse">&ndash;</div><p class="kpi-sub" id="kpi-r2">&nbsp;</p></div>
+      <div class="kpi-tile"><p class="kpi-label">2026 total energy</p><div class="kpi-value" id="kpi-total">&ndash;</div><p class="kpi-sub" id="kpi-total-sub">&nbsp;</p></div>
+      <div class="kpi-tile"><p class="kpi-label">Model in use</p><div class="kpi-value" id="kpi-model" style="font-size:22px;">&ndash;</div><p class="kpi-sub" id="kpi-model-sub">&nbsp;</p></div>
+    </section>
+
+    <!-- ---------------- forecast ---------------- -->
+    <section class="card" id="sec-forecast">
+      <div class="card-header">
+        <h2 class="card-title">2026 solar generation — actual vs predicted</h2>
+        <div class="controls" style="margin:0;">
+          <label for="model-select">Model</label>
+          <select id="model-select"></select>
+          <label for="tm-select">Inputs</label>
+          <select id="tm-select">
+            <option value="with" selected>With module temperature</option>
+            <option value="without">Without module temperature</option>
+          </select>
+          <div class="seg" id="view-seg">
+            <button data-view="monthly" class="active">Monthly</button>
+            <button data-view="daily">Daily</button>
+          </div>
+        </div>
+      </div>
+      <p class="card-note" id="forecast-note">&nbsp;</p>
+      <div class="chart-wrap"><canvas id="line-chart"></canvas></div>
+      <div class="legend-row">
+        <span class="swatch actual"></span> Actual (what really happened)
+        <span class="swatch solar"></span> Predicted by the model
+      </div>
+    </section>
+
+    <!-- ---------------- model comparison ---------------- -->
+    <section class="card" id="sec-models">
+      <div class="card-header"><h2 class="card-title">How the six models compare</h2></div>
+      <p class="card-note">Each bar is one model's accuracy on 2026 — days it never saw while training. Click a bar to load that model into the chart above.</p>
+      <div id="leaderboard" class="leaderboard"></div>
+      <p class="card-note" id="leaderboard-note" style="margin-top:14px;">&nbsp;</p>
+    </section>
+
+    <!-- ---------------- reliability ---------------- -->
+    <section class="card" id="sec-trust">
+      <div class="card-header"><h2 class="card-title">Is the model reliable? — tested two independent ways</h2></div>
+      <p class="card-note" id="validation-note">&nbsp;</p>
+      <div class="kpi-row" id="validation-row" style="grid-template-columns:repeat(2,minmax(0,1fr));"></div>
+      <p class="card-note" id="validation-verdict" style="margin-top:4px;">&nbsp;</p>
+    </section>
+
+    <!-- ---------------- 2027 forward scenario ---------------- -->
+    <section class="card" id="sec-2027">
+      <div class="card-header">
+        <h2 class="card-title">2027 outlook — a scenario, not a measured forecast</h2>
+        <div class="controls" style="margin:0;">
+          <label for="f-model">Model</label>
+          <select id="f-model"></select>
+          <div class="seg" id="cap-seg">
+            <button data-cap="compound" class="active">Recent fleet growth</button>
+            <button data-cap="linear">Low fleet growth</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice warn" id="f-caveat">&nbsp;</div>
+
+      <div class="kpi-row" id="f-kpis" style="grid-template-columns:repeat(4,minmax(0,1fr));"></div>
+
+      <div class="chart-wrap"><canvas id="future-chart"></canvas></div>
+      <p class="card-note" id="f-chart-note" style="margin-top:12px;">&nbsp;</p>
+
+      <h3 class="sub-title">Month by month, against the independent benchmark</h3>
+      <p class="card-note" id="f-bench-note">&nbsp;</p>
+      <div class="table-scroll" style="max-height:none;">
+        <table class="data-table" id="future-table">
+          <thead><tr><th>Month</th><th id="f-th-ours">Our model (MU)</th><th>Benchmark (MU)</th><th>Difference</th><th>Divergence</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-title">Where that power is projected to come from</h3>
+      <p class="card-note">Each region forecast with its own model, its own climatology weather and its own projected capacity.</p>
+      <div id="f-regions" class="leaderboard wide"></div>
+
+      <p class="card-note" id="f-assumptions" style="margin-top:16px;">&nbsp;</p>
+    </section>
+
+    <!-- ---------------- weather ---------------- -->
+    <section class="card" id="sec-weather">
+      <div class="card-header">
+        <h2 class="card-title">The weather the model reads</h2>
+        <div class="controls" style="margin:0;">
+          <label for="weather-year">Year</label>
+          <select id="weather-year"></select>
+        </div>
+      </div>
+      <p class="card-note">Real daily satellite weather from NASA POWER, averaged over India's solar states by how much capacity each one holds. These five numbers are the model's only inputs.</p>
+      <div class="kpi-row" id="weather-tiles" style="grid-template-columns:repeat(5,minmax(0,1fr));"></div>
+      <div class="chart-wrap short"><canvas id="weather-chart"></canvas></div>
+      <h3 class="sub-title">Which weather matters most?</h3>
+      <p class="card-note">How strongly each input moves solar generation (correlation on the training years). Longer bar = stronger influence.</p>
+      <div id="weather-impact" class="leaderboard wide"></div>
+    </section>
+
+    <!-- ---------------- map ---------------- -->
+    <section class="card" id="sec-map">
+      <div class="card-header">
+        <h2 class="card-title">Where the power comes from — pick any day</h2>
+        <div class="controls" style="margin:0;">
+          <label for="map-month">Month</label>
+          <select id="map-month"></select>
+          <label for="map-day">Day</label>
+          <select id="map-day"></select>
+        </div>
+      </div>
+      <p class="card-note" id="map-note">&nbsp;</p>
+      <div class="map-grid">
+        <div id="map" class="map-box"></div>
+        <div id="region-cards" class="region-cards"></div>
+      </div>
+      <p class="card-note" style="margin-top:12px;">Each circle is a real solar hub. Size = how much that state weighs in the national fleet, colour = how sunny it was that day. Click one for its weather.</p>
+      <div id="hub-detail" class="hub-detail"></div>
+    </section>
+
+    <!-- ---------------- data ---------------- -->
+    <section class="card" id="sec-data">
+      <div class="card-header">
+        <h2 class="card-title">Source data we fetched (2024 – 2026)</h2>
+        <div class="controls" style="margin:0;">
+          <label for="data-year">Year</label>
+          <select id="data-year"></select>
+          <label for="data-metric">Show</label>
+          <select id="data-metric">
+            <option value="solar_generation_MU" selected>Solar generation (MU)</option>
+            <option value="ghi">GHI — irradiance (kWh/m²/day)</option>
+            <option value="ambient_temp">Ambient temp (°C)</option>
+            <option value="module_temp">Module temp (°C)</option>
+            <option value="wind_speed">Wind speed (m/s)</option>
+            <option value="relative_humidity">Relative humidity (%)</option>
+          </select>
+        </div>
+      </div>
+      <p class="card-note" id="data-note">&nbsp;</p>
+      <div class="kpi-row" id="data-summary"></div>
+      <div class="chart-wrap short"><canvas id="data-chart"></canvas></div>
+      <p class="card-note" style="margin-top:14px;">Daily rows — solar generation (Grid-India PSP reports) joined with weather (NASA POWER). Scroll for more.</p>
+      <div class="table-scroll">
+        <table class="data-table" id="data-table">
+          <thead><tr>
+            <th>Date</th><th>Split</th><th>Solar (MU)</th><th>GHI</th><th>Amb °C</th><th>Mod °C</th><th>Wind</th><th>Humid %</th><th>Cap (MW)</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="footer-note" id="footer">&nbsp;</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+{
+  "files_read": 293,
+  "days_extracted_2026": 281,
+  "range": [
+    "2026-01-01",
+    "2026-10-20"
+  ],
+  "months": {
+    "2026-01": {
+      "days_with_report": 27,
+      "days_in_month": 31,
+      "complete": false
+    },
+    "2026-02": {
+      "days_with_report": 27,
+      "days_in_month": 28,
+      "complete": false
+    },
+    "2026-03": {
+      "days_with_report": 31,
+      "days_in_month": 31,
+      "complete": true
+    },
+    "2026-04": {
+      "days_with_report": 29,
+      "days_in_month": 30,
+      "complete": false
+    },
+    "2026-05": {
+      "days_with_report": 30,
+      "days_in_month": 31,
+      "complete": false
+    },
+    "2026-06": {
+      "days_with_report": 29,
+      "days_in_month": 30,
+      "complete": false
+    },
+    "2026-07": {
+      "days_with_report": 29,
+      "days_in_month": 31,
+      "complete": false
+    },
+    "2026-08": {
+      "days_with_report": 30,
+      "days_in_month": 31,
+      "complete": false
+    },
+    "2026-09": {
+      "days_with_report": 30,
+      "days_in_month": 30,
+      "complete": true
+    },
+    "2026-10": {
+      "days_with_report": 19,
+      "days_in_month": 31,
+      "complete": false
+    }
+  },
+  "duplicate_dates": {
+    "2026-03-30": [
+      "2026-03-30__30.03.26_NLDC_PSP_502.xls"
+    ]
+  },
+  "cross_check": {
+    "days": 11,
+    "values_compared": 308,
+    "mismatches": [
+      {
+        "date": "2025-04-01",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 132.25,
+        "monthly": 131.0
+      },
+      {
+        "date": "2025-04-01",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 45.63,
+        "monthly": 45.0
+      },
+      {
+        "date": "2025-04-01",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 287.063,
+        "monthly": 284.0
+      },
+      {
+        "date": "2025-04-01",
+        "region": "ALL_INDIA",
+        "field": "energy_met_MU",
+        "daily": 4768.56,
+        "monthly": 4768.0
+      },
+      {
+        "date": "2025-04-02",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 33.77,
+        "monthly": 33.0
+      },
+      {
+        "date": "2025-04-02",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 291.34,
+        "monthly": 289.0
+      },
+      {
+        "date": "2025-04-03",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 131.01,
+        "monthly": 130.0
+      },
+      {
+        "date": "2025-04-03",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 34.19,
+        "monthly": 33.0
+      },
+      {
+        "date": "2025-04-03",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 72.9,
+        "monthly": 72.0
+      },
+      {
+        "date": "2025-04-03",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 274.54,
+        "monthly": 272.0
+      },
+      {
+        "date": "2025-04-04",
+        "region": "ER",
+        "field": "solar_generation_MU",
+        "daily": 2.96,
+        "monthly": 2.9
+      },
+      {
+        "date": "2025-04-04",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 128.35,
+        "monthly": 127.0
+      },
+      {
+        "date": "2025-04-04",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 36.1,
+        "monthly": 35.0
+      },
+      {
+        "date": "2025-04-04",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 66.9,
+        "monthly": 66.0
+      },
+      {
+        "date": "2025-04-04",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 265.59,
+        "monthly": 263.0
+      },
+      {
+        "date": "2025-04-04",
+        "region": "ALL_INDIA",
+        "field": "energy_met_MU",
+        "daily": 4669.64,
+        "monthly": 4669.0
+      },
+      {
+        "date": "2025-04-05",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 130.91,
+        "monthly": 130.0
+      },
+      {
+        "date": "2025-04-05",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 43.62,
+        "monthly": 43.0
+      },
+      {
+        "date": "2025-04-05",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 62.6,
+        "monthly": 62.0
+      },
+      {
+        "date": "2025-04-05",
+        "region": "ER",
+        "field": "hydro_generation_MU",
+        "daily": 27.62,
+        "monthly": 27.0
+      },
+      {
+        "date": "2025-04-05",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 275.21,
+        "monthly": 273.0
+      },
+      {
+        "date": "2025-04-06",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 139.09,
+        "monthly": 138.0
+      },
+      {
+        "date": "2025-04-06",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 28.64,
+        "monthly": 28.0
+      },
+      {
+        "date": "2025-04-06",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 58.0,
+        "monthly": 57.0
+      },
+      {
+        "date": "2025-04-06",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 257.41,
+        "monthly": 255.0
+      },
+      {
+        "date": "2025-04-07",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 156.11,
+        "monthly": 155.0
+      },
+      {
+        "date": "2025-04-07",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 47.62,
+        "monthly": 47.0
+      },
+      {
+        "date": "2025-04-07",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 77.2,
+        "monthly": 76.0
+      },
+      {
+        "date": "2025-04-07",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 312.1,
+        "monthly": 309.0
+      },
+      {
+        "date": "2025-04-08",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 175.9,
+        "monthly": 175.0
+      },
+      {
+        "date": "2025-04-08",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 54.96,
+        "monthly": 54.0
+      },
+      {
+        "date": "2025-04-08",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 74.0,
+        "monthly": 73.0
+      },
+      {
+        "date": "2025-04-08",
+        "region": "NER",
+        "field": "hydro_generation_MU",
+        "daily": 9.75,
+        "monthly": 9.0
+      },
+      {
+        "date": "2025-04-08",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 340.3,
+        "monthly": 337.0
+      },
+      {
+        "date": "2025-04-09",
+        "region": "ER",
+        "field": "solar_generation_MU",
+        "daily": 4.17,
+        "monthly": 4.1
+      },
+      {
+        "date": "2025-04-09",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 181.64,
+        "monthly": 180.0
+      },
+      {
+        "date": "2025-04-09",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 61.15,
+        "monthly": 60.0
+      },
+      {
+        "date": "2025-04-09",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 82.0,
+        "monthly": 81.0
+      },
+      {
+        "date": "2025-04-09",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 361.04,
+        "monthly": 358.0
+      },
+      {
+        "date": "2025-04-09",
+        "region": "ALL_INDIA",
+        "field": "energy_met_MU",
+        "daily": 5076.4,
+        "monthly": 5077.0
+      },
+      {
+        "date": "2025-04-10",
+        "region": "ER",
+        "field": "solar_generation_MU",
+        "daily": 3.78,
+        "monthly": 3.7
+      },
+      {
+        "date": "2025-04-10",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 181.48,
+        "monthly": 177.0
+      },
+      {
+        "date": "2025-04-10",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 34.96,
+        "monthly": 34.0
+      },
+      {
+        "date": "2025-04-10",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 57.7,
+        "monthly": 57.0
+      },
+      {
+        "date": "2025-04-10",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 301.8,
+        "monthly": 296.0
+      },
+      {
+        "date": "2025-04-10",
+        "region": "ER",
+        "field": "evening_peak_demand_MW",
+        "daily": 19789.0,
+        "monthly": 19790.0
+      },
+      {
+        "date": "2025-04-10",
+        "region": "ALL_INDIA",
+        "field": "evening_peak_demand_MW",
+        "daily": 199016.0,
+        "monthly": 199017.0
+      },
+      {
+        "date": "2025-12-31",
+        "region": "NR",
+        "field": "hydro_generation_MU",
+        "daily": 121.49,
+        "monthly": 112.0
+      },
+      {
+        "date": "2025-12-31",
+        "region": "WR",
+        "field": "hydro_generation_MU",
+        "daily": 42.8,
+        "monthly": 54.0
+      },
+      {
+        "date": "2025-12-31",
+        "region": "SR",
+        "field": "hydro_generation_MU",
+        "daily": 103.83,
+        "monthly": 103.0
+      },
+      {
+        "date": "2025-12-31",
+        "region": "ALL_INDIA",
+        "field": "hydro_generation_MU",
+        "daily": 305.45,
+        "monthly": 306.0
+      }
+    ]
+  },
+  "warnings": []
+}

@@ -1,0 +1,162 @@
+{
+  "headline": {
+    "files_processed": 21,
+    "date_range": [
+      "2024-04-01",
+      "2025-12-31"
+    ],
+    "total_all_india_day_rows": 640,
+    "missing_day_count": 0,
+    "total_daily_rows_all_regions": 3840
+  },
+  "missing_dates": [],
+  "per_file": [
+    {
+      "file": "Monthly_Report_Apr_2024.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Aug_2024.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Dec_2024.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Jul_2024.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Jun_2024.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_May_2024.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Nov_2024.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Oct_2024.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Sep_2024_R2.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 39,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Apr_2025_619.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_August_2025_688.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_December_2025_145.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Feb_2025.pdf",
+      "daily_rows": 168,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Jan_2025.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_July_2025_339.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Jun_2025_356.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_Mar_2025_317.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_May_2025_676.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_November_2025_678.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_October_2025_576.pdf",
+      "daily_rows": 186,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    },
+    {
+      "file": "Monthly_Report_September_2025_269.pdf",
+      "daily_rows": 180,
+      "capacity_rows": 7,
+      "supply_rows": 40,
+      "warnings": []
+    }
+  ]
+}

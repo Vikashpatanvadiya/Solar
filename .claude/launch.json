@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "solar-dashboard",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8743"],
+      "port": 8743
+    },
+    {
+      "name": "solar-api",
+      "runtimeExecutable": ".venv/bin/python",
+      "runtimeArgs": ["-m", "uvicorn", "backend.app.main:app", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}
