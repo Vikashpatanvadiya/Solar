@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite site",
-    "build": "vite build site",
+    "build": "vite build site && cp -r site/data site/dist/data",
     "preview": "vite preview"
   },
   "devDependencies": {
